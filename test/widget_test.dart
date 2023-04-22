@@ -1,30 +1,34 @@
-// This is a basic Flutter widget test.
-//
-// To perform an interaction with a widget in your test, use the WidgetTester
-// utility in the flutter_test package. For example, you can send tap and scroll
-// gestures. You can also use WidgetTester to find child widgets in the widget
-// tree, read text, and verify that the values of widget properties are correct.
-
+// Importando los paquetes y páginas necesarios
+import 'package:practicaFlutter/pages/buttons_page.dart';
+import 'package:practicaFlutter/pages/container_page.dart';
+import 'package:practicaFlutter/pages/home_page.dart';
+import 'package:practicaFlutter/pages/inputs_page.dart';
+import 'package:practicaFlutter/pages/stack_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_test/flutter_test.dart';
 
-import 'package:example/main.dart';
-
+// La función principal que ejecuta la aplicación
 void main() {
-  testWidgets('Counter increments smoke test', (WidgetTester tester) async {
-    // Build our app and trigger a frame.
-    await tester.pumpWidget(const MyApp());
+  runApp(const MyApp());
+}
 
-    // Verify that our counter starts at 0.
-    expect(find.text('0'), findsOneWidget);
-    expect(find.text('1'), findsNothing);
+// Definición del widget principal de la aplicación
+class MyApp extends StatelessWidget {
+  const MyApp({super.key});
 
-    // Tap the '+' icon and trigger a frame.
-    await tester.tap(find.byIcon(Icons.add));
-    await tester.pump();
-
-    // Verify that our counter has incremented.
-    expect(find.text('0'), findsNothing);
-    expect(find.text('1'), findsOneWidget);
-  });
+  // Este widget construye la interfaz de usuario de la aplicación
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      debugShowCheckedModeBanner: false,
+      title: 'Primera App UTT',
+      initialRoute: '/home',
+      routes: {
+        '/home': (context) => const HomePage(),
+        '/container': (context) => const ContainerPage(),
+        '/stack': (context) => const StackPage(),
+        '/inputs': (context) => const InputsPage(),
+        '/buttons': (context) => const ButtonsPage(),
+      },
+    );
+  }
 }
